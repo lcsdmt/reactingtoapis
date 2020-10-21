@@ -30,11 +30,15 @@ class App extends React.Component {
     }
 
     handleClickFilm() {
-        this.setState({ didLoad: true })
+        this.setState({
+            didLoad: true,
+            didPeopleLoad: false
+        })
     }
 
     handleClickPeople() {
-        this.setState({ didPeopleLoad: true })
+        this.setState({ didPeopleLoad: true,
+        didLoad:false })
     }
 
     render() {
@@ -49,11 +53,16 @@ class App extends React.Component {
                                     event.preventDefault();
                                     this.handleClickFilm();
                                 }}>Load Films</button>
-
+                        </div>
+                        <div>
+                            <button id="loadPeopleBtn"
+                                onClick={event => {
+                                    event.preventDefault();
+                                    this.handleClickPeople();
+                                }}>Load People</button>
                         </div>
                     </form>
                     <FilmsToCardInfo films={this.state.filmsArr} />
-
                 </React.Fragment>
             );
         } else if (this.state.didPeopleLoad === true) {
@@ -62,7 +71,13 @@ class App extends React.Component {
                     <Header />
                     <form>
                         <div>
-
+                            <button id="loadFilmsBtn"
+                                onClick={event => {
+                                    event.preventDefault();
+                                    this.handleClickFilm();
+                                }}>Load Films</button>
+                        </div>
+                        <div>
                             <button id="loadPeopleBtn"
                                 onClick={event => {
                                     event.preventDefault();
