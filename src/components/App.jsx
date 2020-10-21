@@ -13,7 +13,7 @@ class App extends React.Component {
             filmsArr: [],
             peopleArr: [],
             didLoad: false,
-
+            didPeopleLoad: false
         }
     }
 
@@ -29,8 +29,12 @@ class App extends React.Component {
             .catch(err => console.log(err));
     }
 
-    handleClick() {
+    handleClickFilm() {
         this.setState({ didLoad: true })
+    }
+
+    handleClickPeople() {
+        this.setState({ didPeopleLoad: true })
     }
 
     render() {
@@ -43,16 +47,29 @@ class App extends React.Component {
                             <button id="loadFilmsBtn"
                                 onClick={event => {
                                     event.preventDefault();
-                                    this.handleClick();
+                                    this.handleClickFilm();
                                 }}>Load Films</button>
-                            <button id="loadPeopleBtn"
-                                onClick={event => {
-                                    event.preventDefault();
-                                    this.handleClick();
-                                }}>Load People</button>
+
                         </div>
                     </form>
                     <FilmsToCardInfo films={this.state.filmsArr} />
+
+                </React.Fragment>
+            );
+        } else if (this.state.didPeopleLoad === true) {
+            return (
+                <React.Fragment>
+                    <Header />
+                    <form>
+                        <div>
+
+                            <button id="loadPeopleBtn"
+                                onClick={event => {
+                                    event.preventDefault();
+                                    this.handleClickPeople();
+                                }}>Load People</button>
+                        </div>
+                    </form>
                     <People people={this.state.peopleArr} />
                 </React.Fragment>
             )
@@ -65,12 +82,14 @@ class App extends React.Component {
                             <button id="loadFilmsBtn"
                                 onClick={event => {
                                     event.preventDefault();
-                                    this.handleClick();
+                                    this.handleClickFilm();
                                 }}>Load Films</button>
-                            <button id="loadFilmsBtn"
+                        </div>
+                        <div>
+                            <button id="loadPeopleBtn"
                                 onClick={event => {
                                     event.preventDefault();
-                                    this.handleClick();
+                                    this.handleClickPeople();
                                 }}>Load People</button>
                         </div>
                     </form>
@@ -78,7 +97,6 @@ class App extends React.Component {
             )
         }
     }
-
 }
 
 

@@ -1,9 +1,9 @@
 import React from 'react';
-
+import logo from "./logo.png"
 
 let Header = () => {
     return (
-        <h1>wsedcrfvgbhnj</h1>
+        <img src={logo} alt=""/>
     )
 }
 
